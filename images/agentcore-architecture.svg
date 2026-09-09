@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1660 820" width="1660" height="820" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1660" height="820" fill="#ffffff"/>
+
+  <!-- ================= AWS Cloud boundary ================= -->
+  <rect x="230" y="30" width="1400" height="760" fill="none" stroke="#000000" stroke-width="4"/>
+  <rect x="230" y="30" width="86" height="76" fill="#232F3E"/>
+  <text x="273" y="80" fill="#ffffff" font-size="30" font-weight="700" text-anchor="middle">aws</text>
+  <text x="336" y="80" fill="#000000" font-size="30">AWS Cloud</text>
+
+  <!-- ================= Customer ================= -->
+  <circle cx="105" cy="392" r="30" fill="none" stroke="#000000" stroke-width="5"/>
+  <path d="M50 480 C50 428 78 428 105 428 C132 428 160 428 160 480" fill="none" stroke="#000000" stroke-width="5"/>
+  <text x="105" y="520" font-size="26" text-anchor="middle">customer</text>
+
+  <line x1="175" y1="378" x2="374" y2="378" stroke="#000000" stroke-width="4"/>
+  <polygon points="392,378 372,368 372,388" fill="#000000"/>
+  <text x="284" y="360" font-size="26" text-anchor="middle">User question</text>
+
+  <line x1="392" y1="430" x2="193" y2="430" stroke="#000000" stroke-width="4"/>
+  <polygon points="175,430 195,420 195,440" fill="#000000"/>
+  <text x="284" y="468" font-size="26" text-anchor="middle">LLM response</text>
+
+  <!-- ================= AgentCore Runtime ================= -->
+  <rect x="400" y="250" width="280" height="500" rx="14" fill="none" stroke="#01A88D" stroke-width="4" stroke-dasharray="12 8"/>
+  <text x="540" y="290" font-size="25" font-weight="700" fill="#01A88D" text-anchor="middle">AgentCore Runtime</text>
+
+  <g transform="translate(540,400)">
+    <path d="M-62 -34 L-32 -60 L32 -60 L62 -34 L62 34 L32 60 L-32 60 L-62 34 Z" fill="none" stroke="#000000" stroke-width="4"/>
+    <rect x="-30" y="-24" width="24" height="24" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <circle cx="-18" cy="24" r="11" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-6 -12 L34 -12 M-6 12 L34 12 M8 -12 L8 12" stroke="#01A88D" stroke-width="4" fill="none"/>
+  </g>
+  <text x="540" y="500" font-size="26" text-anchor="middle">Restaurant Agent</text>
+  <text x="540" y="530" font-size="20" fill="#555555" text-anchor="middle">Strands + Amazon Nova</text>
+
+  <rect x="420" y="558" width="240" height="72" rx="10" fill="#E8F7F4" stroke="#01A88D" stroke-width="3"/>
+  <text x="540" y="592" font-size="21" text-anchor="middle">AgentCore Memory</text>
+  <text x="540" y="616" font-size="17" fill="#555555" text-anchor="middle">conversation history</text>
+
+  <rect x="420" y="648" width="240" height="72" rx="10" fill="#E8F7F4" stroke="#01A88D" stroke-width="3"/>
+  <text x="540" y="682" font-size="21" text-anchor="middle">AgentCore Observability</text>
+  <text x="540" y="706" font-size="17" fill="#555555" text-anchor="middle">traces to CloudWatch</text>
+
+  <!-- ================= top branch: booking tools ================= -->
+  <path d="M680 350 L716 350 L716 190 L808 190" fill="none" stroke="#000000" stroke-width="4"/>
+  <polygon points="826,190 806,180 806,200" fill="#000000"/>
+  <text x="772" y="168" font-size="26" text-anchor="middle">tool call</text>
+
+  <g transform="translate(900,190)">
+    <rect x="-64" y="-58" width="86" height="34" rx="4" fill="none" stroke="#000000" stroke-width="4"/>
+    <circle cx="-42" cy="-41" r="4" fill="#000000"/><circle cx="-30" cy="-41" r="4" fill="#000000"/><circle cx="-18" cy="-41" r="4" fill="#000000"/>
+    <rect x="-24" y="-18" width="88" height="30" rx="4" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-6 -10 L8 -3 L-6 4 Z" fill="#01A88D"/>
+    <rect x="-24" y="22" width="88" height="30" rx="4" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-2 37 a10 10 0 1 0 6 -9" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-64 -24 L-64 37 L-24 37" fill="none" stroke="#000000" stroke-width="4" stroke-dasharray="8 6"/>
+  </g>
+  <text x="900" y="288" font-size="26" text-anchor="middle">Booking tools</text>
+  <text x="900" y="316" font-size="20" fill="#555555" text-anchor="middle">@tool Python functions</text>
+
+  <line x1="1000" y1="168" x2="1240" y2="168" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1258,168 1238,158 1238,178" fill="#000000"/>
+  <text x="1128" y="148" font-size="26" text-anchor="middle">update</text>
+
+  <line x1="1258" y1="222" x2="1018" y2="222" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1000,222 1020,212 1020,232" fill="#000000"/>
+  <text x="1128" y="262" font-size="26" text-anchor="middle">feeds</text>
+
+  <rect x="1270" y="118" width="126" height="126" fill="#C925D1"/>
+  <g transform="translate(1333,181)" stroke="#ffffff" stroke-width="5" fill="none">
+    <ellipse cx="0" cy="-28" rx="36" ry="13"/>
+    <path d="M-36 -28 L-36 28 A36 13 0 0 0 36 28 L36 -28"/>
+    <path d="M-36 0 A36 13 0 0 0 36 0"/>
+  </g>
+  <text x="1333" y="288" font-size="26" text-anchor="middle">Amazon DynamoDB</text>
+  <text x="1333" y="316" font-size="20" fill="#555555" text-anchor="middle">restaurant_bookings</text>
+
+  <!-- ================= bottom branch: knowledge base ================= -->
+  <path d="M680 470 L716 470 L716 620 L812 620" fill="none" stroke="#000000" stroke-width="4"/>
+  <polygon points="830,620 810,610 810,630" fill="#000000"/>
+  <text x="772" y="656" font-size="26" text-anchor="middle">tool call</text>
+
+  <g transform="translate(900,614)">
+    <path d="M-56 -18 L-2 -30 L-2 36 L-56 48 Z" fill="none" stroke="#000000" stroke-width="4"/>
+    <path d="M56 -18 L2 -30 L2 36 L56 48 Z" fill="none" stroke="#000000" stroke-width="4" stroke-dasharray="9 7"/>
+    <g stroke="#01A88D" stroke-width="4" fill="none">
+      <path d="M-26 -70 L-4 -82 L18 -70 L18 -48 L-4 -36 L-26 -48 Z"/>
+      <circle cx="-4" cy="-59" r="6"/>
+    </g>
+  </g>
+  <text x="900" y="712" font-size="26" text-anchor="middle">Menus Knowledge Base</text>
+  <text x="900" y="740" font-size="20" fill="#555555" text-anchor="middle">your existing KB</text>
+
+  <line x1="972" y1="592" x2="1160" y2="592" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1178,592 1158,582 1158,602" fill="#000000"/>
+  <text x="1075" y="572" font-size="25" text-anchor="middle">Search on</text>
+
+  <line x1="1178" y1="646" x2="990" y2="646" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="972,646 992,636 992,656" fill="#000000"/>
+  <text x="1075" y="686" font-size="25" text-anchor="middle">Context</text>
+
+  <rect x="1190" y="556" width="120" height="120" fill="#7AA116"/>
+  <g transform="translate(1250,616)">
+    <path d="M-34 -30 L-26 34 L26 34 L34 -30 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <ellipse cx="0" cy="-30" rx="34" ry="11" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <path d="M-16 16 L-2 -8 L16 8" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="-16" cy="16" r="6" fill="#ffffff"/>
+    <circle cx="-2" cy="-8" r="6" fill="#ffffff"/>
+    <circle cx="16" cy="8" r="6" fill="#ffffff"/>
+  </g>
+  <text x="1250" y="712" font-size="24" text-anchor="middle">Amazon S3 Vectors</text>
+  <text x="1250" y="740" font-size="24" text-anchor="middle">vector index</text>
+
+  <line x1="1318" y1="592" x2="1410" y2="592" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1428,592 1408,582 1408,602" fill="#000000"/>
+  <text x="1373" y="540" font-size="22" text-anchor="middle">Connects to</text>
+
+  <line x1="1428" y1="646" x2="1336" y2="646" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1318,646 1338,636 1338,656" fill="#000000"/>
+  <text x="1373" y="686" font-size="22" text-anchor="middle">feeds</text>
+
+  <rect x="1440" y="556" width="120" height="120" fill="#7AA116"/>
+  <g transform="translate(1500,616)" stroke="#ffffff" stroke-width="6" fill="none">
+    <path d="M-34 -30 L-26 34 L26 34 L34 -30 Z"/>
+    <ellipse cx="0" cy="-30" rx="34" ry="11"/>
+    <path d="M-14 -6 L18 12"/>
+  </g>
+  <text x="1500" y="712" font-size="24" text-anchor="middle">Documents</text>
+  <text x="1500" y="740" font-size="24" text-anchor="middle">S3 bucket</text>
+</svg>

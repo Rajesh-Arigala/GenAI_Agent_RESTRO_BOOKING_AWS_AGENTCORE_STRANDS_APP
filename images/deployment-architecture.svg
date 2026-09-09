@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 700" width="1900" height="700" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1900" height="700" fill="#ffffff"/>
+
+  <!-- ================= AWS Cloud boundary ================= -->
+  <rect x="250" y="30" width="1620" height="640" fill="none" stroke="#000000" stroke-width="4"/>
+  <rect x="250" y="30" width="86" height="76" fill="#232F3E"/>
+  <text x="293" y="80" fill="#ffffff" font-size="30" font-weight="700" text-anchor="middle">aws</text>
+  <text x="356" y="80" fill="#000000" font-size="30">AWS Cloud</text>
+
+  <!-- ================= Notebook (your laptop / Studio) ================= -->
+  <g transform="translate(120,230)">
+    <rect x="-62" y="-48" width="124" height="86" rx="6" fill="none" stroke="#000000" stroke-width="5"/>
+    <line x1="-62" y1="-26" x2="62" y2="-26" stroke="#000000" stroke-width="5"/>
+    <circle cx="-48" cy="-37" r="4" fill="#000000"/><circle cx="-36" cy="-37" r="4" fill="#000000"/>
+    <rect x="-44" y="-14" width="88" height="12" rx="3" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <rect x="-44" y="12" width="60" height="12" rx="3" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <line x1="-74" y1="52" x2="74" y2="52" stroke="#000000" stroke-width="5"/>
+  </g>
+  <text x="120" y="322" font-size="24" text-anchor="middle">Jupyter notebook</text>
+  <text x="120" y="350" font-size="20" fill="#555555" text-anchor="middle">starter toolkit</text>
+
+  <line x1="200" y1="230" x2="342" y2="230" stroke="#000000" stroke-width="4"/>
+  <polygon points="360,230 340,220 340,240" fill="#000000"/>
+  <text x="280" y="210" font-size="21" text-anchor="middle">zip + upload</text>
+
+  <!-- ================= 1. S3 source bucket ================= -->
+  <rect x="365" y="175" width="110" height="110" fill="#7AA116"/>
+  <g transform="translate(420,230)" stroke="#ffffff" stroke-width="6" fill="none">
+    <path d="M-31 -27 L-23 31 L23 31 L31 -27 Z"/>
+    <ellipse cx="0" cy="-27" rx="31" ry="10"/>
+    <path d="M-13 -6 L16 11"/>
+  </g>
+  <text x="420" y="322" font-size="24" text-anchor="middle">Amazon S3</text>
+  <text x="420" y="350" font-size="20" fill="#555555" text-anchor="middle">source bundle</text>
+
+  <line x1="485" y1="230" x2="632" y2="230" stroke="#000000" stroke-width="4"/>
+  <polygon points="650,230 630,220 630,240" fill="#000000"/>
+  <text x="567" y="210" font-size="21" text-anchor="middle">builds from</text>
+
+  <!-- ================= 2. CodeBuild ================= -->
+  <rect x="655" y="175" width="110" height="110" fill="#6B4FBB"/>
+  <g transform="translate(710,230)" stroke="#ffffff" stroke-width="6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M-8 -22 L-28 0 L-8 22"/>
+    <path d="M12 -22 L32 0 L12 22"/>
+  </g>
+  <text x="710" y="322" font-size="24" text-anchor="middle">AWS CodeBuild</text>
+  <text x="710" y="350" font-size="20" fill="#555555" text-anchor="middle">ARM64 container build</text>
+
+  <line x1="775" y1="230" x2="922" y2="230" stroke="#000000" stroke-width="4"/>
+  <polygon points="940,230 920,220 920,240" fill="#000000"/>
+  <text x="857" y="210" font-size="21" text-anchor="middle">pushes image</text>
+
+  <!-- ================= 3. ECR ================= -->
+  <rect x="945" y="175" width="110" height="110" fill="#ED7100"/>
+  <g transform="translate(1000,230)" stroke="#ffffff" stroke-width="5" fill="none">
+    <path d="M-30 -14 L0 -30 L30 -14 L30 16 L0 32 L-30 16 Z"/>
+    <path d="M-30 -14 L0 2 L30 -14"/>
+    <path d="M0 2 L0 32"/>
+  </g>
+  <text x="1000" y="322" font-size="24" text-anchor="middle">Amazon ECR</text>
+  <text x="1000" y="350" font-size="20" fill="#555555" text-anchor="middle">container image</text>
+
+  <line x1="1065" y1="230" x2="1212" y2="230" stroke="#000000" stroke-width="4"/>
+  <polygon points="1230,230 1210,220 1210,240" fill="#000000"/>
+  <text x="1147" y="210" font-size="21" text-anchor="middle">deployed to</text>
+
+  <!-- ================= 4. AgentCore Runtime ================= -->
+  <rect x="1240" y="140" width="290" height="180" rx="14" fill="none" stroke="#01A88D" stroke-width="4" stroke-dasharray="12 8"/>
+  <text x="1385" y="178" font-size="24" font-weight="700" fill="#01A88D" text-anchor="middle">AgentCore Runtime</text>
+  <g transform="translate(1385,248)">
+    <path d="M-46 -26 L-24 -46 L24 -46 L46 -26 L46 26 L24 46 L-24 46 L-46 26 Z" fill="none" stroke="#000000" stroke-width="4"/>
+    <rect x="-22" y="-18" width="18" height="18" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <circle cx="-13" cy="18" r="8" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-5 -9 L26 -9 M-5 9 L26 9 M6 -9 L6 9" stroke="#01A88D" stroke-width="4" fill="none"/>
+  </g>
+  <text x="1385" y="352" font-size="24" text-anchor="middle">Restaurant Agent</text>
+  <text x="1385" y="380" font-size="20" fill="#555555" text-anchor="middle">DEFAULT endpoint</text>
+
+  <!-- ================= launch() bracket ================= -->
+  <path d="M365 118 L365 96 L1530 96 L1530 118" fill="none" stroke="#01A88D" stroke-width="4"/>
+  <text x="947" y="80" font-size="25" font-weight="700" fill="#01A88D" text-anchor="middle">runtime.launch()  -  one command, no Docker on your machine</text>
+
+  <!-- ================= created alongside ================= -->
+  <text x="330" y="470" font-size="24" font-weight="700">Created for you at the same time</text>
+
+  <line x1="1385" y1="400" x2="1385" y2="518" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1385,536 1375,516 1395,516" fill="#000000"/>
+
+  <rect x="330" y="500" width="290" height="96" rx="10" fill="#F4F6F8" stroke="#9aa4af" stroke-width="3"/>
+  <text x="475" y="538" font-size="22" text-anchor="middle">IAM execution role</text>
+  <text x="475" y="568" font-size="18" fill="#555555" text-anchor="middle">what the agent runs as</text>
+
+  <rect x="655" y="500" width="290" height="96" rx="10" fill="#E8F7F4" stroke="#01A88D" stroke-width="3"/>
+  <text x="800" y="538" font-size="22" text-anchor="middle">AgentCore Memory</text>
+  <text x="800" y="568" font-size="18" fill="#555555" text-anchor="middle">conversation store</text>
+
+  <rect x="980" y="500" width="290" height="96" rx="10" fill="#F4F6F8" stroke="#9aa4af" stroke-width="3"/>
+  <text x="1125" y="538" font-size="22" text-anchor="middle">CodeBuild service role</text>
+  <text x="1125" y="568" font-size="18" fill="#555555" text-anchor="middle">used only during builds</text>
+
+  <rect x="1305" y="500" width="290" height="96" rx="10" fill="#F4F6F8" stroke="#9aa4af" stroke-width="3"/>
+  <text x="1450" y="538" font-size="22" text-anchor="middle">CloudWatch log groups</text>
+  <text x="1450" y="568" font-size="18" fill="#555555" text-anchor="middle">runtime logs and traces</text>
+</svg>

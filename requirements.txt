@@ -1,0 +1,5 @@
+# Dependencies installed INSIDE the AgentCore Runtime container.
+# Keep this list small - it is baked into the deployed image.
+bedrock-agentcore
+strands-agents
+boto3

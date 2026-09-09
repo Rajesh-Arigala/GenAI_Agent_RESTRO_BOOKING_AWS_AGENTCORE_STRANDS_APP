@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurant Agent</title>
+
+  <!-- The agent replies in Markdown. marked turns it into HTML, DOMPurify makes
+       that HTML safe to insert. If either fails to load, the script below falls
+       back to escaped plain text. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --border: #dfe3e8;
+      --text: #16191f;
+      --muted: #6b7280;
+      --accent: #01a88d;
+      --user: #232f3e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .app { width: 100%; max-width: 820px; display: flex; flex-direction: column; gap: 16px; }
+    header h1 { margin: 0 0 4px; font-size: 22px; }
+    header p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .controls input {
+      flex: 1 1 200px; min-width: 160px; padding: 9px 12px;
+      border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--panel);
+    }
+    button {
+      padding: 9px 16px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--panel); font-size: 14px; cursor: pointer;
+    }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+    button:disabled { opacity: .5; cursor: default; }
+
+    #chat {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; height: 520px; overflow-y: auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .msg { max-width: 86%; padding: 10px 14px; border-radius: 12px; line-height: 1.55; font-size: 15px; }
+    .msg.user { align-self: flex-end; background: var(--user); color: #fff; border-bottom-right-radius: 4px; white-space: pre-wrap; }
+    .msg.agent { align-self: flex-start; background: #eef1f4; border-bottom-left-radius: 4px; }
+    .msg.error { align-self: flex-start; background: #fdecea; color: #8a1c12; border: 1px solid #f5c6c2; white-space: pre-wrap; }
+    .msg.system { align-self: center; background: none; color: var(--muted); font-size: 13px; padding: 2px; }
+    .msg.plain { white-space: pre-wrap; }
+
+    /* Markdown coming back from the agent. Headings are deliberately small so a
+       "### Booking Confirmed" does not shout across the whole panel. */
+    .msg.agent > :first-child { margin-top: 0; }
+    .msg.agent > :last-child { margin-bottom: 0; }
+    .msg.agent p { margin: 8px 0; }
+    .msg.agent h1, .msg.agent h2, .msg.agent h3,
+    .msg.agent h4, .msg.agent h5, .msg.agent h6 {
+      margin: 12px 0 6px; font-size: 15px; font-weight: 700; line-height: 1.3;
+    }
+    .msg.agent ul, .msg.agent ol { margin: 8px 0; padding-left: 22px; }
+    .msg.agent li { margin: 3px 0; }
+    .msg.agent li > ul, .msg.agent li > ol { margin: 3px 0; }
+    .msg.agent code {
+      background: #dfe4ea; padding: 1px 5px; border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px;
+    }
+    .msg.agent pre {
+      background: #dfe4ea; padding: 10px 12px; border-radius: 8px;
+      overflow-x: auto; margin: 8px 0;
+    }
+    .msg.agent pre code { background: none; padding: 0; }
+    .msg.agent hr { border: none; border-top: 1px solid #cfd6dd; margin: 12px 0; }
+    .msg.agent table { border-collapse: collapse; margin: 8px 0; font-size: 14px; display: block; overflow-x: auto; }
+    .msg.agent th, .msg.agent td { border: 1px solid #cfd6dd; padding: 5px 9px; text-align: left; }
+    .msg.agent blockquote { margin: 8px 0; padding-left: 12px; border-left: 3px solid #cfd6dd; color: var(--muted); }
+    .msg.agent a { color: #0b6efd; }
+
+    form { display: flex; gap: 8px; }
+    form input {
+      flex: 1; padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-size: 15px; background: var(--panel);
+    }
+    .suggestions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .suggestions button { font-size: 13px; color: var(--muted); }
+    footer { color: var(--muted); font-size: 12px; text-align: center; }
+    .notice code { background: #eceff2; padding: 1px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Restaurant Agent</h1>
+      <p>Ask about the menu, or book, list, check and cancel a table.</p>
+    </header>
+
+    {% if not configured %}
+    <div class="msg error notice" style="max-width:100%">
+      <strong>API_GATEWAY_URL is not set.</strong> Set it in your environment and restart
+      <code>app.py</code>.
+    </div>
+    {% endif %}
+
+    <div class="controls">
+      <input id="name" type="text" placeholder="Your name — lets the agent find your bookings">
+      <button id="reset" type="button">New conversation</button>
+    </div>
+
+    <div id="chat">
+      <div class="msg system">New conversation started.</div>
+    </div>
+
+    <div class="suggestions">
+      <button type="button" data-q="What is in the children's menu?">Children's menu</button>
+      <button type="button" data-q="What are this week's specials?">Weekly specials</button>
+      <button type="button" data-q="I want to book a table for 4 people at 21:00 on 2026-05-05.">Book a table</button>
+      <button type="button" data-q="Show me my bookings.">My bookings</button>
+    </div>
+
+    <form id="composer">
+      <input id="prompt" type="text" placeholder="Type a message..." autocomplete="off" autofocus>
+      <button class="primary" id="send" type="submit">Send</button>
+    </form>
+
+    <footer>Flask &rarr; API Gateway &rarr; Lambda &rarr; Bedrock AgentCore Runtime</footer>
+  </div>
+
+<script>
+  const chat = document.getElementById('chat');
+  const form = document.getElementById('composer');
+  const promptInput = document.getElementById('prompt');
+  const nameInput = document.getElementById('name');
+  const sendBtn = document.getElementById('send');
+
+  const canRenderMarkdown =
+    typeof marked !== 'undefined' && typeof DOMPurify !== 'undefined';
+
+  if (canRenderMarkdown) {
+    marked.setOptions({ breaks: true, gfm: true });
+  }
+
+  // The session id ties turns together so the agent remembers the conversation.
+  // AgentCore needs at least 33 characters.
+  function newSessionId() {
+    const rand = () => Math.random().toString(36).slice(2);
+    return (rand() + rand() + rand() + rand()).slice(0, 40);
+  }
+  let sessionId = newSessionId();
+
+  function addMessage(text, kind) {
+    const el = document.createElement('div');
+    el.className = 'msg ' + kind;
+    el.textContent = text;
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return el;
+  }
+
+  /* Render the agent's Markdown into the bubble. Falls back to escaped plain
+     text if the CDN scripts did not load, so the UI still works offline. */
+  function renderAgentReply(el, markdownText) {
+    if (!canRenderMarkdown) {
+      el.classList.add('plain');
+      el.textContent = markdownText;
+      return;
+    }
+    el.classList.remove('plain');
+    el.innerHTML = DOMPurify.sanitize(marked.parse(markdownText));
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  document.getElementById('reset').addEventListener('click', () => {
+    sessionId = newSessionId();
+    chat.innerHTML = '';
+    addMessage('New conversation started. The agent has forgotten the previous one.', 'system');
+    promptInput.focus();
+  });
+
+  document.querySelectorAll('.suggestions button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      promptInput.value = btn.dataset.q;
+      form.requestSubmit();
+    });
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const prompt = promptInput.value.trim();
+    if (!prompt) return;
+
+    addMessage(prompt, 'user');
+    promptInput.value = '';
+    promptInput.disabled = true;
+    sendBtn.disabled = true;
+
+    const pending = addMessage('Thinking...', 'agent plain');
+
+    const body = { prompt, session_id: sessionId };
+    if (nameInput.value.trim()) body.customer_name = nameInput.value.trim();
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        pending.remove();
+        addMessage(data.error || 'Something went wrong.', 'error');
+      } else {
+        const reply = (data.result === undefined || data.result === null || data.result === '')
+          ? '_(the agent returned an empty reply)_'
+          : data.result;
+        renderAgentReply(pending, reply);
+        if (data.session_id) sessionId = data.session_id;
+      }
+    } catch (err) {
+      pending.remove();
+      addMessage('Could not reach the server: ' + err.message, 'error');
+    } finally {
+      promptInput.disabled = false;
+      sendBtn.disabled = false;
+      promptInput.focus();
+    }
+  });
+</script>
+</body>
+</html>

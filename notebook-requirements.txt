@@ -1,0 +1,5 @@
+# Dependencies for running the notebook itself (your laptop / SageMaker Studio).
+bedrock-agentcore-starter-toolkit
+bedrock-agentcore
+boto3
+pandas

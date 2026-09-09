@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1980 1040" width="1980" height="1040" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1980" height="1040" fill="#ffffff"/>
+
+  <!-- ================= AWS Cloud boundary ================= -->
+  <rect x="230" y="30" width="1720" height="970" fill="none" stroke="#000000" stroke-width="4"/>
+  <rect x="230" y="30" width="86" height="76" fill="#232F3E"/>
+  <text x="273" y="80" fill="#ffffff" font-size="30" font-weight="700" text-anchor="middle">aws</text>
+  <text x="336" y="80" fill="#000000" font-size="30">AWS Cloud</text>
+
+  <!-- ================= Browser (outside AWS) ================= -->
+  <g transform="translate(112,175)">
+    <rect x="-58" y="-46" width="116" height="82" rx="6" fill="none" stroke="#000000" stroke-width="5"/>
+    <line x1="-58" y1="-22" x2="58" y2="-22" stroke="#000000" stroke-width="5"/>
+    <circle cx="-44" cy="-34" r="4" fill="#000000"/><circle cx="-32" cy="-34" r="4" fill="#000000"/><circle cx="-20" cy="-34" r="4" fill="#000000"/>
+    <line x1="0" y1="36" x2="0" y2="54" stroke="#000000" stroke-width="5"/>
+    <line x1="-28" y1="54" x2="28" y2="54" stroke="#000000" stroke-width="5"/>
+  </g>
+  <text x="112" y="270" font-size="25" text-anchor="middle">Customer</text>
+  <text x="112" y="298" font-size="25" text-anchor="middle">browser</text>
+
+  <line x1="182" y1="175" x2="322" y2="175" stroke="#000000" stroke-width="4"/>
+  <polygon points="340,175 320,165 320,185" fill="#000000"/>
+  <text x="261" y="155" font-size="22" text-anchor="middle">HTTPS</text>
+
+  <!-- ================= Web server (Flask UI) ================= -->
+  <rect x="345" y="120" width="110" height="110" fill="#232F3E"/>
+  <g transform="translate(400,175)" stroke="#ffffff" stroke-width="5" fill="none">
+    <rect x="-32" y="-32" width="64" height="26" rx="4"/>
+    <rect x="-32" y="2" width="64" height="26" rx="4"/>
+    <circle cx="-18" cy="-19" r="4" fill="#ffffff" stroke="none"/>
+    <circle cx="-18" cy="15" r="4" fill="#ffffff" stroke="none"/>
+  </g>
+  <text x="400" y="270" font-size="25" text-anchor="middle">Web server</text>
+  <text x="400" y="298" font-size="21" fill="#555555" text-anchor="middle">Flask UI</text>
+
+  <line x1="465" y1="175" x2="602" y2="175" stroke="#000000" stroke-width="4"/>
+  <polygon points="620,175 600,165 600,185" fill="#000000"/>
+  <text x="542" y="155" font-size="22" text-anchor="middle">POST</text>
+
+  <!-- ================= API Gateway ================= -->
+  <rect x="625" y="120" width="110" height="110" fill="#8C4FFF"/>
+  <g transform="translate(680,175)" stroke="#ffffff" stroke-width="5" fill="none">
+    <rect x="-34" y="-32" width="68" height="64" rx="6"/>
+    <line x1="-34" y1="-12" x2="34" y2="-12"/>
+    <line x1="-34" y1="10" x2="34" y2="10"/>
+    <circle cx="-20" cy="-22" r="3.5" fill="#ffffff" stroke="none"/>
+    <circle cx="-20" cy="0" r="3.5" fill="#ffffff" stroke="none"/>
+    <circle cx="-20" cy="21" r="3.5" fill="#ffffff" stroke="none"/>
+  </g>
+  <text x="680" y="270" font-size="25" text-anchor="middle">Amazon API Gateway</text>
+  <text x="680" y="298" font-size="21" fill="#555555" text-anchor="middle">HTTP API</text>
+
+  <line x1="745" y1="175" x2="882" y2="175" stroke="#000000" stroke-width="4"/>
+  <polygon points="900,175 880,165 880,185" fill="#000000"/>
+  <text x="822" y="155" font-size="22" text-anchor="middle">proxy</text>
+
+  <!-- ================= Lambda ================= -->
+  <rect x="905" y="120" width="110" height="110" fill="#ED7100"/>
+  <g transform="translate(960,175)" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">
+    <path d="M-30 32 L-6 -32 L6 -32 L30 32"/>
+    <path d="M-30 32 L-14 32"/>
+    <path d="M14 32 L30 32"/>
+  </g>
+  <text x="960" y="270" font-size="25" text-anchor="middle">AWS Lambda</text>
+  <text x="960" y="298" font-size="21" fill="#555555" text-anchor="middle">lambda_function.py</text>
+
+  <line x1="960" y1="320" x2="960" y2="404" stroke="#000000" stroke-width="4"/>
+  <polygon points="960,422 950,402 970,402" fill="#000000"/>
+  <text x="1170" y="372" font-size="22" text-anchor="middle">bedrock-agentcore:InvokeAgentRuntime</text>
+
+  <!-- ================= AgentCore Runtime ================= -->
+  <rect x="805" y="430" width="310" height="450" rx="14" fill="none" stroke="#01A88D" stroke-width="4" stroke-dasharray="12 8"/>
+  <text x="960" y="470" font-size="25" font-weight="700" fill="#01A88D" text-anchor="middle">AgentCore Runtime</text>
+
+  <g transform="translate(960,560)">
+    <path d="M-58 -32 L-30 -56 L30 -56 L58 -32 L58 32 L30 56 L-30 56 L-58 32 Z" fill="none" stroke="#000000" stroke-width="4"/>
+    <rect x="-28" y="-22" width="22" height="22" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <circle cx="-17" cy="22" r="10" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-6 -11 L32 -11 M-6 11 L32 11 M8 -11 L8 11" stroke="#01A88D" stroke-width="4" fill="none"/>
+  </g>
+  <text x="960" y="654" font-size="25" text-anchor="middle">Restaurant Agent</text>
+
+  <rect x="828" y="682" width="264" height="66" rx="10" fill="#E8F7F4" stroke="#01A88D" stroke-width="3"/>
+  <text x="960" y="714" font-size="21" text-anchor="middle">AgentCore Memory</text>
+  <text x="960" y="736" font-size="17" fill="#555555" text-anchor="middle">conversation history</text>
+
+  <rect x="828" y="762" width="264" height="66" rx="10" fill="#E8F7F4" stroke="#01A88D" stroke-width="3"/>
+  <text x="960" y="794" font-size="21" text-anchor="middle">AgentCore Observability</text>
+  <text x="960" y="816" font-size="17" fill="#555555" text-anchor="middle">traces and logs</text>
+
+  <!-- runtime -> CloudWatch -->
+  <line x1="805" y1="795" x2="668" y2="795" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="650,795 670,785 670,805" fill="#000000"/>
+  <text x="730" y="775" font-size="21" text-anchor="middle">emits</text>
+
+  <rect x="530" y="740" width="110" height="110" fill="#E7157B"/>
+  <g transform="translate(585,795)" stroke="#ffffff" stroke-width="6" fill="none" stroke-linejoin="round">
+    <path d="M-34 6 L-16 6 L-6 -22 L6 18 L16 -6 L24 6 L34 6"/>
+  </g>
+  <text x="585" y="890" font-size="24" text-anchor="middle">Amazon CloudWatch</text>
+  <text x="585" y="918" font-size="20" fill="#555555" text-anchor="middle">traces, spans, logs</text>
+
+  <!-- ================= top branch: booking tools ================= -->
+  <path d="M1115 520 L1160 520 L1160 430 L1222 430" fill="none" stroke="#000000" stroke-width="4"/>
+  <polygon points="1240,430 1220,420 1220,440" fill="#000000"/>
+  <text x="1198" y="410" font-size="22" text-anchor="middle">tool call</text>
+
+  <g transform="translate(1320,430)">
+    <rect x="-60" y="-54" width="80" height="32" rx="4" fill="none" stroke="#000000" stroke-width="4"/>
+    <circle cx="-40" cy="-38" r="4" fill="#000000"/><circle cx="-28" cy="-38" r="4" fill="#000000"/><circle cx="-16" cy="-38" r="4" fill="#000000"/>
+    <rect x="-22" y="-17" width="82" height="28" rx="4" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-4 -9 L9 -3 L-4 3 Z" fill="#01A88D"/>
+    <rect x="-22" y="21" width="82" height="28" rx="4" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M0 35 a10 10 0 1 0 6 -9" fill="none" stroke="#01A88D" stroke-width="4"/>
+    <path d="M-60 -22 L-60 35 L-22 35" fill="none" stroke="#000000" stroke-width="4" stroke-dasharray="8 6"/>
+  </g>
+  <text x="1320" y="522" font-size="25" text-anchor="middle">Booking tools</text>
+  <text x="1320" y="550" font-size="20" fill="#555555" text-anchor="middle">@tool Python functions</text>
+
+  <line x1="1416" y1="408" x2="1548" y2="408" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1566,408 1546,398 1546,418" fill="#000000"/>
+  <text x="1491" y="388" font-size="22" text-anchor="middle">update</text>
+
+  <line x1="1566" y1="460" x2="1434" y2="460" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1416,460 1436,450 1436,470" fill="#000000"/>
+  <text x="1491" y="498" font-size="22" text-anchor="middle">feeds</text>
+
+  <rect x="1576" y="378" width="112" height="112" fill="#C925D1"/>
+  <g transform="translate(1632,434)" stroke="#ffffff" stroke-width="5" fill="none">
+    <ellipse cx="0" cy="-25" rx="32" ry="12"/>
+    <path d="M-32 -25 L-32 25 A32 12 0 0 0 32 25 L32 -25"/>
+    <path d="M-32 0 A32 12 0 0 0 32 0"/>
+  </g>
+  <text x="1632" y="530" font-size="25" text-anchor="middle">Amazon DynamoDB</text>
+  <text x="1632" y="558" font-size="20" fill="#555555" text-anchor="middle">restaurant_bookings</text>
+
+  <!-- ================= bottom branch: knowledge base ================= -->
+  <path d="M1115 700 L1160 700 L1160 760 L1216 760" fill="none" stroke="#000000" stroke-width="4"/>
+  <polygon points="1234,760 1214,750 1214,770" fill="#000000"/>
+  <text x="1198" y="808" font-size="22" text-anchor="middle">tool call</text>
+
+  <g transform="translate(1300,754)">
+    <path d="M-54 -17 L-2 -29 L-2 35 L-54 47 Z" fill="none" stroke="#000000" stroke-width="4"/>
+    <path d="M54 -17 L2 -29 L2 35 L54 47 Z" fill="none" stroke="#000000" stroke-width="4" stroke-dasharray="9 7"/>
+    <g stroke="#01A88D" stroke-width="4" fill="none">
+      <path d="M-25 -67 L-4 -79 L17 -67 L17 -45 L-4 -33 L-25 -45 Z"/>
+      <circle cx="-4" cy="-56" r="6"/>
+    </g>
+  </g>
+  <text x="1290" y="850" font-size="25" text-anchor="middle">Menus</text>
+  <text x="1290" y="878" font-size="25" text-anchor="middle">Knowledge Base</text>
+  <text x="1290" y="906" font-size="20" fill="#555555" text-anchor="middle">your existing KB</text>
+
+  <line x1="1370" y1="732" x2="1462" y2="732" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1480,732 1460,722 1460,742" fill="#000000"/>
+  <text x="1425" y="690" font-size="21" text-anchor="middle">Search on</text>
+
+  <line x1="1480" y1="786" x2="1388" y2="786" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1370,786 1390,776 1390,796" fill="#000000"/>
+  <text x="1425" y="826" font-size="21" text-anchor="middle">Context</text>
+
+  <rect x="1490" y="704" width="112" height="112" fill="#7AA116"/>
+  <g transform="translate(1546,760)">
+    <path d="M-32 -28 L-24 32 L24 32 L32 -28 Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <ellipse cx="0" cy="-28" rx="32" ry="10" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <path d="M-15 15 L-2 -7 L15 8" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="-15" cy="15" r="6" fill="#ffffff"/>
+    <circle cx="-2" cy="-7" r="6" fill="#ffffff"/>
+    <circle cx="15" cy="8" r="6" fill="#ffffff"/>
+  </g>
+  <text x="1546" y="856" font-size="23" text-anchor="middle">Amazon S3 Vectors</text>
+  <text x="1546" y="884" font-size="23" text-anchor="middle">vector index</text>
+
+  <line x1="1610" y1="732" x2="1712" y2="732" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1730,732 1710,722 1710,742" fill="#000000"/>
+  <text x="1670" y="690" font-size="21" text-anchor="middle">Connects to</text>
+
+  <line x1="1730" y1="786" x2="1628" y2="786" stroke="#000000" stroke-width="4" stroke-dasharray="14 10"/>
+  <polygon points="1610,786 1630,776 1630,796" fill="#000000"/>
+  <text x="1670" y="826" font-size="21" text-anchor="middle">feeds</text>
+
+  <rect x="1740" y="704" width="112" height="112" fill="#7AA116"/>
+  <g transform="translate(1796,760)" stroke="#ffffff" stroke-width="6" fill="none">
+    <path d="M-32 -28 L-24 32 L24 32 L32 -28 Z"/>
+    <ellipse cx="0" cy="-28" rx="32" ry="10"/>
+    <path d="M-13 -6 L17 11"/>
+  </g>
+  <text x="1796" y="856" font-size="23" text-anchor="middle">Documents</text>
+  <text x="1796" y="884" font-size="23" text-anchor="middle">S3 bucket</text>
+</svg>
